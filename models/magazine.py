@@ -14,9 +14,20 @@ class Magazine:
         if len(category) == 0:
             raise ValueError("Category must be longer than 0 characters")
     
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and 2 <= len(value) <= 16:
+            self._name = value
+        else:
+            raise ValueError("Name must be between 2 and 16 characters long")
+            
 
 
 
-    def
-    __repr__(self):
+
+
+    def __repr__(self):
         return f'<Magazine {self.name}>'
