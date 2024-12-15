@@ -5,7 +5,7 @@ from database.connection import get_db_connection
 class Author:
     def __init__(self, id, name):
 
-        self._id = id
+        self._id = cursor.lastowid
         self._name = name
 
         if not isinstance(name, str):
