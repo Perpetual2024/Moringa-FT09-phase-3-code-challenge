@@ -1,3 +1,6 @@
+from database.connection import get_db_connection
+
+
 class Magazine:
     def __init__(self, id, name, category):
         self.id = id
@@ -14,6 +17,11 @@ class Magazine:
         if len(category) == 0:
             raise ValueError("Category must be longer than 0 characters")
     
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor .execute("INSERT INTO magazines (name, category) VALUES (?, ?)", (name, category))
+        conn.commit()
+        conn.close()
     @property
     def name(self):
         return self._name
