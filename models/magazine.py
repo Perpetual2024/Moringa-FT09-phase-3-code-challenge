@@ -3,7 +3,7 @@ from database.connection import get_db_connection
 
 class Magazine:
     def __init__(self, id, name, category):
-        self.id = id
+        self.id = cursor.lastrowid
         self.name = name
         self.category = category
 
@@ -58,4 +58,4 @@ class Magazine:
 
 
     def __repr__(self):
-        return f'<Magazine {self.name}>'
+        return f'<Magazine {self.name} - {self.category} - {self.id}>'
