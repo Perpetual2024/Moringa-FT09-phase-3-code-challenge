@@ -37,6 +37,24 @@ class Author:
     @id.setter
     def id(self, value):
         raise AttributeError("ID cannot be changed")
+    
+    def article(self):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM articles WHERE author_id = ?", (self.id,))
+        articles = cursor.fetchall()
+        conn.close()
+        return [dict (article) for article in articles]
+    
+    def magazines(self):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM magazines WHERE author_id = ?", (self.id,))
+        magazines = cursor.fetchall()
+        conn.close()
+        return [dict (magazine) for magazine in magazines]
+        
+
 
 
     def __repr__(self):

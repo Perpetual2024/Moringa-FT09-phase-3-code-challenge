@@ -24,7 +24,25 @@ class Article:
         cursor.execute("INSERT INTO articles (title, content, author_id, magazine_id) VALUES (?, ?, ? ,?)", (title, content, author_id, magazine_id))
         conn.commit()
         conn.close()
-        
+
+    @property
+    def id(self):
+        return self._id
+    
+    @property
+    def title(self):
+        return self._title
+    @title.setter
+    def title(self, value):
+        raise AttributeError("Title cannot be changed.")
+
+    @property
+    def content(self):
+        return self._content
+    @content.setter
+    def content(self, value):
+        raise AttributeError("Content cannot be changed.")
+
 
 
     def __repr__(self):
