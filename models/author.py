@@ -2,7 +2,7 @@ class Author:
     def __init__(self, id, name):
 
         self.id = id
-        self.name = name
+        self._name = name
 
         if not isinstance(name, str):
             raise TypeError("Name must be a string")
@@ -12,6 +12,22 @@ class Author:
     @property
     def name(self):
         return self._name
+
+    @name.setter
+    def name(self, value):
+        raise AttributeError("Name cannot be changed")
+
+    @property
+    def id(self):
+        if not isinstance(self._id, int):
+            raise TypeError("ID must be of type int.")
+        return self._id
+
+
+    @id.setter
+    def id(self, int):
+
+        
 
 
     def __repr__(self):
