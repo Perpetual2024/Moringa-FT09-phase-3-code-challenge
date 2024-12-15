@@ -23,13 +23,27 @@ class Magazine:
             self._name = value
         else:
             raise ValueError("Name must be between 2 and 16 characters long")
-
     @property
+    def category(self):
+        return self._category
+    
+    @category.setter
     def category( self, value) : 
         if isinstance (value, str) and len(value) > 0: 
             self._category = value
         else:
             raise ValueError("Category must be longer than 0 characters")
+
+    @property
+    def id(self):
+        return self._id
+    @id.setter
+    def id(self, value):
+       if isinstance(value, int):
+            return self._id
+       else:
+            raise TypeError("ID must be an integer")
+        
 
 
 
