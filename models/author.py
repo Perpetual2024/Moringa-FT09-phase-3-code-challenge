@@ -15,6 +15,9 @@ class Author:
         
         conn = get_db_connection()
         cursor = conn.cursor()
+        cursor.execute("INSERT INTO authors (name) VALUES (?, ?)", (name))
+        conn.commit()
+        conn.close()
 
     @property
     def name(self):
