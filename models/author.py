@@ -50,7 +50,7 @@ class Author:
         type(self).all[self.id] = self
 
     @classmethod
-    #creates a new entry in the authors table of the database
+    
     def create(cls, name):
         author = cls(name)
         author.save()
@@ -127,7 +127,6 @@ class Author:
         cur.execute(sql, (self.author_id,))
         conn.commit()
 
-        # Delete the dictionary entry using id as the key
         del type(self).all[self.author_id]
 
         # Set the id to None
