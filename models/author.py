@@ -65,10 +65,10 @@ class Author:
         CURSOR = conn.cursor()
         """retrieves and returns a list of articles wriitten by this author"""
         sql = """
-            SELECT ar.*
-            FROM articles ar
-            INNER JOIN authors a ON ar.author = a.id
-            WHERE a.id = ?
+            SELECT article.*
+            FROM articles article
+            INNER JOIN authors author ON article.author = author.id
+            WHERE author.id = ?
         """
 
         CURSOR.execute(sql, (self.id,))
@@ -88,9 +88,9 @@ class Author:
         sql = """
             SELECT DISTINCT m.*
             FROM magazines m
-            INNER JOIN articles ar ON ar.magazine = m.id
-            INNER JOIN authors a ON ar.author = a.id
-            WHERE a.id = ?
+            INNER JOIN articles article ON article.magazine = magazine.id
+            INNER JOIN authors author ON article.author = author.id
+            WHERE author.id = ?
         """
 
         CURSOR.execute(sql, (self.id,))
